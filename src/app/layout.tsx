@@ -15,15 +15,6 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const queryClient = new QueryClient();
-    await queryClient.prefetchQuery({
-        queryKey: ["posts"],
-        queryFn: async () =>
-            // await authApi.me().then((res) => {
-            //   return res.data;
-            // }),
-            {}
-    });
     return (
         <html lang="en">
             <body className={inter.className}>
