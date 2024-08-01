@@ -1,5 +1,5 @@
 import {instance} from "./baseApi";
-import {PostType} from "@/types/types";
+import {CreatePostType, PostType} from "@/types/types";
 import {useQuery} from "@tanstack/react-query";
 
 const baseGetPosts = (pageNumber: string) => "/" + pageNumber + "0";
@@ -8,7 +8,10 @@ const postsApi = {
     getPosts(pageNumber: string) {
         // return instance.get<PostType>(baseGetPosts(pageNumber));
         return instance.get<Array<PostType>>("");
-    }
+    },
+    createPost(data: CreatePostType) {
+        return instance.post<CreatePostType>('', data);
+      },
 };
 
 const useGetPosts = (pageNumber: number) => {

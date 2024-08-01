@@ -1,6 +1,7 @@
+import {PaginationType} from "@/types/types";
 import {Box, ListItem, UnorderedList} from "@chakra-ui/react";
 import Link from "next/link";
-import React, {ChangeEvent} from "react";
+import React from "react";
 
 export const Pagination = ({
     postsPerPage,
@@ -8,13 +9,7 @@ export const Pagination = ({
     paginate,
     setCurrentPage,
     currentPage
-}: {
-    postsPerPage: number;
-    totalPosts: number;
-    paginate: (pageNumber: number) => void;
-    setCurrentPage: (value: number) => void;
-    currentPage: number;
-}) => {
+}: PaginationType) => {
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
         pageNumbers.push(i);
@@ -30,49 +25,29 @@ export const Pagination = ({
                 alignItems="center"
                 style={{margin: 0, padding: 0}}>
                 {pageNumbers.map((number) => {
-                    if (number <= 5 && currentPage <= 5) {
-                        return (
-                            <ListItem
-                                px="10px"
-                                py="20px"
-                                key={number}
-                                onClick={() => {
-                                    paginate(number);
+                    return (
+                        <ListItem
+                            px="10px"
+                            py="20px"
+                            key={number}
+                            onClick={() => {
+                                paginate(number);
+                            }}>
+                            <Link
+                                href={"#"}
+                                style={{
+                                    color: `${number === currentPage ? "gray" : "white"}`,
+                                    background: `${number === currentPage ? "white" : ""}`,
+                                    padding: "5px 10px",
+                                    borderRadius: "4px"
                                 }}>
-                                <Link
-                                    href={"#"}
-                                    style={{
-                                        color: `${number === currentPage ? "gray" : "white"}`,
-                                        background: `${number === currentPage ? "white" : ""}`,
-                                        padding: "5px 10px",
-                                        borderRadius: "4px"
-                                    }}>
-                                    {number}
-                                </Link>
-                            </ListItem>
-                        );
-                    }
-                    if (
-                        currentPage !== 1 &&
-                        currentPage + 1 <= number + 2 &&
-                        number - 3 <= currentPage - 2 &&
-                        currentPage !== 5 &&
-                        totalPosts - 4 !== currentPage
-                    ) {
-                        return (
-                            <ListItem
-                                key={number}
-                                onClick={() => {
-                                    paginate(number);
-                                }}>
-                                <Link href={"#"}>{number}</Link>
-                            </ListItem>
-                        );
-                    }
+                                {number}
+                            </Link>
+                        </ListItem>
+                    );
                 })}
             </UnorderedList>
-
-            <div className={"flex items-center"}>
+            <div>
                 <Link
                     href={"#"}
                     onClick={() =>
@@ -83,6 +58,9 @@ export const Pagination = ({
                     {">"}
                 </Link>
             </div>
+            <Box pl="8" display={["none", "block"]}>
+                20 items per page
+            </Box>
         </Box>
     );
 };

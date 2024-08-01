@@ -7,10 +7,12 @@ import {ToastContainer} from "react-toastify";
 import {
     DehydratedState,
     HydrationBoundary,
+    QueryCache,
     QueryClient,
     QueryClientProvider
 } from "@tanstack/react-query";
 import {theme} from "./themeConfig";
+import { toastWrapper } from "@/ui-kit/toast";
 
 function Providers({
     children,
@@ -26,7 +28,11 @@ function Providers({
                         staleTime: 5 * 1000,
                         refetchInterval: 5 * 1000
                     }
-                }
+                },
+                queryCache: new QueryCache({
+                    onError: (error) =>
+                      toastWrapper('Произошла ошибка', true),
+                  }),
             })
     );
     return (

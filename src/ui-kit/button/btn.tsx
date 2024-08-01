@@ -1,5 +1,14 @@
 import {Button} from "@chakra-ui/react";
 
-export const ButtonKit = () => {
-    return <Button colorScheme="teal">add Post</Button>;
+type PropType = {
+    title?: string;
+};
+
+export const ButtonKit = (prop: PropType) => {
+    const {title = "add Post"} = prop;
+    return (
+        <Button colorScheme="teal" type="submit">
+            {title}
+        </Button>
+    );
 };
