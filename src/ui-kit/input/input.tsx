@@ -1,12 +1,5 @@
 import React from "react";
-import {
-    ChangeEvent,
-    ComponentPropsWithoutRef,
-    KeyboardEvent,
-    forwardRef,
-    useEffect,
-    useState
-} from "react";
+import {ChangeEvent, ComponentPropsWithoutRef, KeyboardEvent, forwardRef} from "react";
 import {FormControl, FormErrorMessage, FormLabel, Input, InputGroup} from "@chakra-ui/react";
 import {UseFormRegister} from "react-hook-form";
 
@@ -52,8 +45,6 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>((props, ref
         register,
         ...rest
     } = props;
-    const [isFocused, setIsFocused] = useState<boolean>(false);
-    const focused = isFocused ? "light.--color-light-100" : "dark.--color-dark-100";
     const onChangeHandlerInput = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.currentTarget.value.trim()) {
             setError && setError("");
@@ -81,18 +72,12 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>((props, ref
                 alignItems={"flex-start"}
                 flexDirection={"column"}
                 justifyContent={"center"}
-                fill={isFocused ? "light.--color-light-100" : "dark.--color-dark-100"}
                 position={"relative"}>
                 <Input
                     display={"flex"}
                     width={"100%"}
-                    onFocus={() => {
-                        console.log(1)
-                        setIsFocused(true);
-                    }}
                     name={register && register(id).name}
                     ref={register && register(id).ref}
-                    // onBlur={onBlurHandlerInput}
                     id={id}
                     type={type}
                     variant={"primary"}

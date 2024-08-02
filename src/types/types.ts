@@ -4,6 +4,14 @@ export type PostType = {
     body: string;
     userId: number;
 };
+export type CommentType = {
+    id: number;
+    postId: number;
+    name: string;
+    email: string;
+    body: string;
+    title?: string;
+};
 
 export type CreatePostType = CreatePostFormType & {
     userId: string;

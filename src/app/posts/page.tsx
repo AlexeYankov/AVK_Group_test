@@ -1,7 +1,5 @@
-import {MainPage} from "@/features/main/Main";
+import {MainPage} from "@/features/mainPage/Main";
 
-const Main = () => {
+export default function Main() {
     return <MainPage />;
-};
-
-export default Main;
+}

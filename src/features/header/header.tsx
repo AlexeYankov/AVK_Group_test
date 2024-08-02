@@ -1,5 +1,5 @@
 import {Center, Text} from "@chakra-ui/react";
-import {PostCreatePanel} from "../postCreatePanel";
+import {PostCreatePanel} from "./postCreatePanel";
 
 export const Header = () => {
     return (
