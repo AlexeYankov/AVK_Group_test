@@ -1,4 +1,4 @@
-import NotFoundPage from "@/features/notFound/NotFound";
+import NotFoundPage from "@/features/notFoundPage/NotFound";
 
 const NotFound = () => {
     return <NotFoundPage />;

@@ -1,5 +1,5 @@
 import Provider from "@/provider/Provider";
-import {DehydratedState, QueryClient} from "@tanstack/react-query";
+import {DehydratedState} from "@tanstack/react-query";
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 

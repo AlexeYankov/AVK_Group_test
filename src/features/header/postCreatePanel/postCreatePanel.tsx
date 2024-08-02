@@ -10,7 +10,7 @@ import {useMutation} from "@tanstack/react-query";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {CreatePostSchema} from "@/types/schema/createPostSchema";
 import {Box, Center} from "@chakra-ui/react";
-import {ChangeEvent, useEffect, useState} from "react";
+import {ChangeEvent, useState} from "react";
 
 export const PostCreatePanel = () => {
     const [title, setTitle] = useState("");
@@ -22,9 +22,7 @@ export const PostCreatePanel = () => {
         register,
         handleSubmit,
         formState: {errors, isValid, dirtyFields},
-        getValues,
-        reset,
-        setError
+        reset
     } = useForm<CreatePostFormType>({
         mode: "onSubmit",
         shouldUnregister: false,
@@ -35,7 +33,6 @@ export const PostCreatePanel = () => {
         resolver: yupResolver(CreatePostSchema())
     });
 
-    console.log(errors);
     const processForm: SubmitHandler<CreatePostFormType> = async (formData) => {
         if (!formData.title) {
             return toastWrapper("Наименование не может быть пустым");
@@ -62,12 +59,16 @@ export const PostCreatePanel = () => {
 
     return (
         <form onSubmit={handleSubmit(processForm)} style={{width: "100%"}}>
-            <Center display={"flex"} gap={[0, "20px"]} w={"100%"} flexDirection={["column", "row"]}>
+            <Center
+                display={"flex"}
+                justifyContent={"flex-start"}
+                gap={[0, "20px"]}
+                w={"100%"}
+                flexDirection={["column", "row"]}>
                 <Box
                     display={"flex"}
                     flexDirection={["column", "row"]}
                     alignItems={"center"}
-                    justifyContent={"center"}
                     w={"100%"}
                     maxW={["100%", "70%"]}
                     pb={8}
