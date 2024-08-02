@@ -5,8 +5,8 @@ import {Catalog} from "../catalog/Catalog";
 import {useGetComments} from "@/api/commentsApi";
 
 export const CommentPage = ({id}: {id: string}) => {
-    const {data, isLoading} = useGetComments(id);
-    if (!data || isLoading) {
+    const {data, isLoading, isFetching} = useGetComments(id);
+    if (!data || isLoading || isFetching) {
         return <SpinnerForClient />;
     }
     return <Catalog posts={data} />;
