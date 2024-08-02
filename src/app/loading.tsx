@@ -1,4 +1,4 @@
-import {SpinnerForClient} from "@/ui-kit/spinner";
+import { SpinnerForClient } from "@/ui-kit/spinner";
 
 const Spinner = () => <SpinnerForClient />;
 

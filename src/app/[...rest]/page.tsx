@@ -1,7 +1,7 @@
 import NotFoundPage from "@/features/notFoundPage/NotFound";
 
 const NotFound = () => {
-    return <NotFoundPage />;
+  return <NotFoundPage />;
 };
 
 export default NotFound;

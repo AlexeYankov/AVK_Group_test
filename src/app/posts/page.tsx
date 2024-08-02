@@ -1,5 +1,5 @@
-import {MainPage} from "@/features/mainPage/Main";
+import { MainPage } from "@/features/mainPage/Main";
 
 export default function Main() {
-    return <MainPage />;
+  return <MainPage />;
 }

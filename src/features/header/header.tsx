@@ -1,5 +1,5 @@
-import {PostCreatePanel} from "./postCreatePanel";
+import { PostCreatePanel } from "./postCreatePanel";
 
 export const Header = () => {
-    return <PostCreatePanel />;
+  return <PostCreatePanel />;
 };

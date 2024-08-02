@@ -1,9 +1,9 @@
-import {ContainerLayout} from "@/layout/layout";
+import { ContainerLayout } from "@/layout/layout";
 
 export default async function PostLayout({
-    children
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return <ContainerLayout>{children}</ContainerLayout>;
+  return <ContainerLayout>{children}</ContainerLayout>;
 }
