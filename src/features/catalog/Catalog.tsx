@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import {CommentType, PostType} from "@/types/types";
-import {Center, List} from "@chakra-ui/react";
+import {Center, List, Text} from "@chakra-ui/react";
 import {Post} from "../post";
 import {usePathname} from "next/navigation";
 
@@ -14,6 +14,7 @@ export const Catalog = (prop: CatalodType<CommentType | PostType>) => {
     const pathname = usePathname();
     const pathnameId = pathname.slice(7);
     const commentOrPostType = !pathname.slice(6).length;
+    const getDescription = localStorage.getItem("description");
     return (
         <List w={"100%"}>
             {!commentOrPostType && (
@@ -27,7 +28,7 @@ export const Catalog = (prop: CatalodType<CommentType | PostType>) => {
                     />
                 </Center>
             )}
-
+            <Text pt="6">{!commentOrPostType && getDescription}</Text>
             {prop.posts.length
                 ? prop.posts.map((post) => {
                       return <Post key={post.id} post={post} isPost={commentOrPostType} />;

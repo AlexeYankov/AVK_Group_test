@@ -3,11 +3,11 @@
 import Link from "next/link";
 import {CommentType, PostType} from "@/types/types";
 import {Box, Center, ListItem} from "@chakra-ui/react";
-import Image from "next/image";
 
 export const Post = (prop: {post: PostType | CommentType; isPost?: boolean}) => {
+    const setPostInfo = () => localStorage.setItem("description", prop.post.body);
     return (
-        <Center>
+        <Center onClick={setPostInfo}>
             <Link href={prop.isPost ? "/posts/" + prop.post.id : "#"} style={{width: "100%"}}>
                 <ListItem
                     p="4"
