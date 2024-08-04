@@ -26,5 +26,4 @@ export type PaginationType = {
   totalPosts: number;
   currentPage: number;
   paginate: (pageNumber: number) => void;
-  setCurrentPage: (value: number) => void;
 };

@@ -11,7 +11,7 @@ export const CreatePostSchema = () =>
       body: yup
         .string()
         .required("message required")
-        .min(3, "title must be min 3 symbols")
+        .min(3, "message must be min 3 symbols")
         .max(200, "message must be 200 symbols max"),
     })
     .required();

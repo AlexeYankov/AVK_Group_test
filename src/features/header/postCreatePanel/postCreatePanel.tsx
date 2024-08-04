@@ -9,7 +9,7 @@ import { toastWrapper } from "@/ui-kit/toast";
 import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { CreatePostSchema } from "@/types/schema/createPostSchema";
-import { Box, Center } from "@chakra-ui/react";
+import { Box, Center, FormControl, Text } from "@chakra-ui/react";
 import { ChangeEvent, useState } from "react";
 
 export const PostCreatePanel = () => {
@@ -58,44 +58,47 @@ export const PostCreatePanel = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(processForm)} style={{ width: "100%" }}>
-      <Center
-        display={"flex"}
-        justifyContent={"flex-start"}
-        gap={[0, "20px"]}
-        w={"100%"}
-        flexDirection={["column", "row"]}
-      >
-        <Box
+    <Box display={"flex"} flexDirection={"column"} width={"100%"} pt="8">
+      <Text fontSize={"2xl"}>Here you can create your own post</Text>
+      <FormControl as={"form"} onSubmit={handleSubmit(processForm)}>
+        <Center
           display={"flex"}
-          flexDirection={["column", "row"]}
-          alignItems={"center"}
+          justifyContent={"flex-start"}
+          gap={[0, "20px"]}
           w={"100%"}
-          maxW={["100%", "70%"]}
-          pb={8}
-          gap={"20px"}
+          flexDirection={["column", "row"]}
         >
-          <InputKit
-            id="title"
-            register={register}
-            error={errors["title"]?.message}
-            control={dirtyFields}
-            label="post title"
-            value={title}
-            onChangeHandler={onChangeHandlerInput}
-          />
-          <InputKit
-            id="body"
-            register={register}
-            error={errors["body"]?.message}
-            control={dirtyFields}
-            value={body}
-            label="message"
-            onChangeHandler={onChangeHandlerInput}
-          />
-        </Box>
-        <ButtonKit />
-      </Center>
-    </form>
+          <Box
+            display={"flex"}
+            flexDirection={["column", "row"]}
+            alignItems={"center"}
+            w={"100%"}
+            maxW={["100%", "70%"]}
+            pb={8}
+            gap={"20px"}
+          >
+            <InputKit
+              id="title"
+              register={register}
+              error={errors["title"]?.message}
+              control={dirtyFields}
+              label="post title"
+              value={title}
+              onChangeHandler={onChangeHandlerInput}
+            />
+            <InputKit
+              id="body"
+              register={register}
+              error={errors["body"]?.message}
+              control={dirtyFields}
+              value={body}
+              label="message"
+              onChangeHandler={onChangeHandlerInput}
+            />
+          </Box>
+          <ButtonKit />
+        </Center>
+      </FormControl>
+    </Box>
   );
 };

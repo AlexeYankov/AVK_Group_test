@@ -1,28 +1,27 @@
 import { PaginationType } from "@/types/types";
-import { Box, ListItem, UnorderedList } from "@chakra-ui/react";
-import Link from "next/link";
+import { Box, ListItem, UnorderedList, Text } from "@chakra-ui/react";
 import React from "react";
 
 export const Pagination = ({
   postsPerPage,
   totalPosts,
   paginate,
-  setCurrentPage,
   currentPage,
 }: PaginationType) => {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }
+
   return (
     <Box w="100%" display="flex" alignItems="center">
-      <div
-        onClick={() =>
-          setCurrentPage(currentPage > 1 ? currentPage - 1 : currentPage)
-        }
+      <Box
+        onClick={() => {
+          paginate(currentPage > 1 ? currentPage - 1 : 1);
+        }}
       >
-        <Link href={"#"}>{"<"}</Link>
-      </div>
+        <Text cursor={"pointer"}>{"<"}</Text>
+      </Box>
       <UnorderedList
         styleType="none"
         display="flex"
@@ -34,13 +33,13 @@ export const Pagination = ({
             <ListItem
               px="10px"
               py="20px"
+              cursor={"pointer"}
               key={number}
               onClick={() => {
                 paginate(number);
               }}
             >
-              <Link
-                href={"#"}
+              <span
                 style={{
                   color: `${number === currentPage ? "gray" : "white"}`,
                   background: `${number === currentPage ? "white" : ""}`,
@@ -49,25 +48,25 @@ export const Pagination = ({
                 }}
               >
                 {number}
-              </Link>
+              </span>
             </ListItem>
           );
         })}
       </UnorderedList>
-      <div>
-        <Link
-          href={"#"}
-          onClick={() =>
-            setCurrentPage(
+      <Box>
+        <Text
+          cursor={"pointer"}
+          onClick={() => {
+            paginate(
               currentPage < totalPosts / postsPerPage
                 ? currentPage + 1
                 : currentPage,
-            )
-          }
+            );
+          }}
         >
           {">"}
-        </Link>
-      </div>
+        </Text>
+      </Box>
       <Box pl="8" display={["none", "block"]}>
         20 items per page
       </Box>
