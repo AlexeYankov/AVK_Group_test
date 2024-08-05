@@ -58,6 +58,7 @@ export const PostCreatePanel = () => {
         setBody("");
         setTitle("");
 
+        localStorage.setItem("description", normalizeFormData.body);
         router.push("posts/" + res.data.id);
         return { previousPosts, normalizeFormData };
       },
