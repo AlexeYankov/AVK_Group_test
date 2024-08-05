@@ -25,8 +25,8 @@ function Providers({
       new QueryClient({
         defaultOptions: {
           // queries: {
-          //     staleTime: 5 * 1000,
-          //     refetchInterval: 5 * 1000
+          //     staleTime: 55 * 1000,
+          //     refetchInterval: 55 * 1000
           // }
         },
         queryCache: new QueryCache({

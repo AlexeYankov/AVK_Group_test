@@ -16,9 +16,13 @@ export const Pagination = ({
   return (
     <Box w="100%" display="flex" alignItems="center">
       <Box
+        display={"flex"}
         onClick={() => {
           paginate(currentPage > 1 ? currentPage - 1 : 1);
         }}
+        width={"45px"}
+        alignItems={"center"}
+        justifyContent={"center"}
       >
         <Text cursor={"pointer"}>{"<"}</Text>
       </Box>
@@ -53,7 +57,12 @@ export const Pagination = ({
           );
         })}
       </UnorderedList>
-      <Box>
+      <Box
+        display={"flex"}
+        width={"45px"}
+        alignItems={"center"}
+        justifyContent={"center"}
+      >
         <Text
           cursor={"pointer"}
           onClick={() => {

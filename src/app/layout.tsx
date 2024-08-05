@@ -1,4 +1,4 @@
-import Provider from "@/provider/Provider";
+import Provider from "@/provider/provider";
 import { DehydratedState } from "@tanstack/react-query";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";

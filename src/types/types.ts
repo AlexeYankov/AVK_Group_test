@@ -16,6 +16,12 @@ export type CommentType = {
 export type CreatePostType = CreatePostFormType & {
   userId: string;
 };
+
+export type CreatePostResponseType = {
+  data: CreatePostType & {
+    id: number;
+  };
+};
 export type CreatePostFormType = {
   title: string;
   body: string;

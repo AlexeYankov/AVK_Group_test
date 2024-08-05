@@ -5,7 +5,7 @@ import { SpinnerForClient } from "@/ui-kit/spinner";
 import { useGetPosts } from "@/api/postsApi";
 import { Footer } from "../footer";
 import { Header } from "../header";
-import { Catalog } from "../catalog/Catalog";
+import { Catalog } from "../catalog/catalog";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const postsPerPage = 20;
@@ -20,10 +20,13 @@ export const MainPage = () => {
     currentPageFromUrl ? Number(currentPageFromUrl) : 1,
   );
   const { data, isLoading } = useGetPosts();
-
   useEffect(() => {
-    if (Number(currentPageFromUrl) > 5) {
-      router.push("?currentPage=" + 5);
+    if (!data?.length) {
+      return;
+    }
+    const maxPages = Math.ceil(data?.length / postsPerPage);
+    if (Number(currentPageFromUrl) >= maxPages) {
+      router.push("?currentPage=" + maxPages);
       setCurrentPage(5);
     }
     if (
@@ -33,7 +36,7 @@ export const MainPage = () => {
       setCurrentPage(1);
       router.push("?currentPage=" + 1);
     }
-  }, []);
+  }, [data, currentPageFromUrl, router]);
 
   if (!data || isLoading) {
     return <SpinnerForClient />;
