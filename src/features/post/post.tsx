@@ -36,9 +36,8 @@ export const Post = (prop: {
   post: PostType | CommentType;
   isPost?: boolean;
 }) => {
-  const setPostInfo = () => localStorage.setItem("description", prop.post.body);
   return (
-    <Center onClick={setPostInfo}>
+    <Center>
       {prop.isPost ? (
         <Link href={"/posts/" + prop.post.id} style={{ width: "100%" }}>
           <ListItemPage post={prop.post} isPost={prop.isPost} />

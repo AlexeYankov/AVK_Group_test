@@ -1,7 +1,7 @@
 "use client";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { postsApi, useGetPosts } from "@/api/postsApi";
+import { postsApi } from "@/api/postsApi";
 import { CreatePostFormType, CreatePostType } from "@/types/types";
 import { ButtonKit } from "@/ui-kit/button";
 import { InputKit } from "@/ui-kit/input";
@@ -58,7 +58,6 @@ export const PostCreatePanel = () => {
         setBody("");
         setTitle("");
 
-        localStorage.setItem("description", normalizeFormData.body);
         router.push("posts/" + res.data.id);
         return { previousPosts, normalizeFormData };
       },
